@@ -5,8 +5,9 @@ class FixedCostsController < ApplicationController
   end
   
   def create
-    @fixed_cost = FixedCosts.new(params[:fixed_costs].permit(:start, :end, :typeCost, :cost, :description))
+    @fixed_cost = FixedCosts.new(params[:fixed_costs].permit(:start, :end, :type_id, :costRound, :costDecimal, :description))
 
+    #@fixed_cost = FixedCosts.new(post_params)
     if @fixed_cost.save
       redirect_to fixed_costs_path
     else

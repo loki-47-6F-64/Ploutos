@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827120839) do
+ActiveRecord::Schema.define(version: 20130827204513) do
 
   create_table "fixed_costs", force: true do |t|
     t.date     "start"
     t.date     "end"
     t.integer  "type_id"
-    t.decimal  "costs"
+    t.decimal  "costRound"
+    t.decimal  "costDecimal"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"

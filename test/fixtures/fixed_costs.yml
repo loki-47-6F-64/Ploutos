@@ -4,12 +4,14 @@ one:
   start: 2013-08-27
   end: 2013-08-27
   type_id: 
-  costs: 9.99
+  costRound: 9.99
+  costDecimal: 9.99
   description: MyText
 
 two:
   start: 2013-08-27
   end: 2013-08-27
   type_id: 
-  costs: 9.99
+  costRound: 9.99
+  costDecimal: 9.99
   description: MyText

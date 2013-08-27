@@ -20,13 +20,13 @@
     <%= f.date_select(:end, use_two_digit_numbers: true) %>
   </p>
   <p>
-    <%= f.label :type %>
-    <%= f.select :type, @types.map { |type| [type.name,type.id] } %>
+    <%= f.label :type_id %>
+    <%= f.select :type_id, @types.map { |type| [type.name,type.id] } %>
   </p>
   <p>
-    <%= f.label :costs %>
-    <%= f.text_field :costs %>, 
-      <%= f.text_field :costs %>
+    <%= f.label "Cost per month." %>
+    <%= f.text_field :costRound %>, 
+      <%= f.text_field :costDecimal %>
   </p>
 
   <p>
