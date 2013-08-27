@@ -21,7 +21,7 @@
   </p>
   <p>
     <%= f.label :type %>
-    <%= f.select :type, @types.map { |type| [type.name,type] } %>
+    <%= f.select :type, @types.map { |type| [type.name,type.id] } %>
   </p>
   <p>
     <%= f.label :costs %>
