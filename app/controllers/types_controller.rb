@@ -1,5 +1,6 @@
 class TypesController < ApplicationController
   def new
+    @type = Type.new
   end
 
   def create

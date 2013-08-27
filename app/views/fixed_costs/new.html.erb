@@ -1,3 +1,15 @@
+<% if @fixed_cost.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@fixed_cost.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @fixed_cost.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <%= form_for @fixed_cost, url: fixed_costs_path do |f| %>
   <p>
     <%= f.label :start %>
@@ -9,7 +21,7 @@
   </p>
   <p>
     <%= f.label :type %>
-    <%= f.select :type, @types.map { |type| [type.name,type.id] } %>
+    <%= f.select :type, @types.map { |type| [type.name,type] } %>
   </p>
   <p>
     <%= f.label :costs %>
