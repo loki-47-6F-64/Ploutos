@@ -1,0 +1,27 @@
+<%= form_for :fixed_cost, url: fixed_costs_path do |f| %>
+  <p>
+    <%= f.label :start %>
+    <%= f.date_select(:start, use_two_digit_numbers: true) %>
+  </p>
+  <p>
+    <%= f.label :end %>
+    <%= f.date_select(:end, use_two_digit_numbers: true) %>
+  </p>
+  <p>
+    <%= f.label :type %>
+    <%= f.select :type, @types %>
+  </p>
+  <p>
+    <%= f.label :cost %>
+    <%= f.text_field :cost %>, <%= f.text_field :cost %>
+  </p>
+
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
