@@ -1,4 +1,5 @@
 Ploutos::Application.routes.draw do
+  get "overviews/index"
   resources :fixed_costs
   resources :types
   resources :incomes
