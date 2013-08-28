@@ -1,8 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  start: 2013-08-28
-  end: 2013-08-28
   type_id: 
   amountRound: 1
   amountDecimal: 1
@@ -10,8 +8,6 @@ one:
   description: MyText
 
 two:
-  start: 2013-08-28
-  end: 2013-08-28
   type_id: 
   amountRound: 1
   amountDecimal: 1

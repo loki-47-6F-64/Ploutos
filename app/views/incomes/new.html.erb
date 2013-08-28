@@ -11,16 +11,8 @@
 <% end %>
 
 <%= form_for @income, url: incomes_path do |f| %>
-  <p>
-    <%= f.label :start %>
-    <%= f.date_select(:start, use_two_digit_numbers: true) %>
-  </p>
-  <p>
-    <%= f.label :end %>
-    <%= f.date_select(:end, use_two_digit_numbers: true) %>
-  </p>
-  <p>
-    <%= f.label "Cost per month." %>
+ <p>
+    <%= f.label "Income per month." %>
     <%= f.text_field :amountRound %>,
       <%= f.text_field :amountDecimal %>
   </p>

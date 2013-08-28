@@ -15,6 +15,6 @@ class FixedCostsController < ApplicationController
     end
   end
   def fixed_cost_params
-    params[:fixed_costs].permit(:start, :end, :type_id, :amountRound, :amountDecimal, :description)
+    params[:fixed_costs].permit(:type_id, :amountRound, :amountDecimal, :frequency, :description)
   end
 end

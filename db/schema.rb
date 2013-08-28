@@ -11,11 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130828114002) do
+ActiveRecord::Schema.define(version: 20130828195903) do
 
   create_table "fixed_costs", force: true do |t|
-    t.date     "start"
-    t.date     "end"
     t.integer  "type_id"
     t.integer  "amountRound"
     t.integer  "amountDecimal"
@@ -28,8 +26,6 @@ ActiveRecord::Schema.define(version: 20130828114002) do
   add_index "fixed_costs", ["type_id"], name: "index_fixed_costs_on_type_id"
 
   create_table "incomes", force: true do |t|
-    t.date     "start"
-    t.date     "end"
     t.integer  "amountRound"
     t.integer  "amountDecimal"
     t.text     "description"

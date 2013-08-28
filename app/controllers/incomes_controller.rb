@@ -9,6 +9,6 @@ class IncomesController < ApplicationController
   end
 
   def income_params
-    params[:income].permit(:start, :end, :amountRound, :amountDecimal, :description)
+    params[:income].permit(:amountRound, :amountDecimal, :description)
   end
 end

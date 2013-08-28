@@ -1,7 +1,7 @@
 class Income < ActiveRecord::Base
-  #verify valid date
-  validates :start, presence: true
-  validates :end, presence: true
+  def amount
+    return BigDecimal.new(amountRound.to_s) + BigDecimal.new(amountDecimal.to_s) / 100
+  end
 
   # Make sure start is earlier than end.
   validate :startFirst

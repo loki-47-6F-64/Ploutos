@@ -10,15 +10,7 @@
   </div>
 <% end %>
 
-<%= form_for @fixed_cost, url: incomes_path do |f| %>
-  <p>
-    <%= f.label :start %>
-    <%= f.date_select(:start, use_two_digit_numbers: true) %>
-  </p>
-  <p>
-    <%= f.label :end %>
-    <%= f.date_select(:end, use_two_digit_numbers: true) %>
-  </p>
+<%= form_for @fixed_cost, url: fixed_costs_path do |f| %> 
   <p>
     <%= f.label :type_id %>
     <%= f.select :type_id, @types.map { |type| [type.name,type.id] } %>

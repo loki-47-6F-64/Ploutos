@@ -1,9 +1,9 @@
 class FixedCosts < ActiveRecord::Base
-  belongs_to :type
+  def amount
+    return BigDecimal.new(amountRound().to_s) + BigDecimal.new(amountDecimal.to_s) / 100
+  end
 
-  #verify valid date
-  validates :start, presence: true
-  validates :end, presence: true
+  belongs_to :type
 
   # Make sure start is earlier than end.
   validate :startFirst

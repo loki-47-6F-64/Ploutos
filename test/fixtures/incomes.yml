@@ -1,15 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  start: 2013-08-28
-  end: 2013-08-28
   amountRound: 1
   amountDecimal: 1
   description: MyText
 
 two:
-  start: 2013-08-28
-  end: 2013-08-28
   amountRound: 1
   amountDecimal: 1
   description: MyText
