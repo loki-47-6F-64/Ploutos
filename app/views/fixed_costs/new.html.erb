@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_for @fixed_cost, url: fixed_costs_path do |f| %>
+<%= form_for @fixed_cost, url: incomes_path do |f| %>
   <p>
     <%= f.label :start %>
     <%= f.date_select(:start, use_two_digit_numbers: true) %>
@@ -25,10 +25,13 @@
   </p>
   <p>
     <%= f.label "Cost per month." %>
-    <%= f.text_field :costRound %>, 
-      <%= f.text_field :costDecimal %>
+    <%= f.text_field :amountRound %>, 
+      <%= f.text_field :amountDecimal %>
   </p>
-
+  <p>
+    <%= f.label :frequency %>
+    <%= f.text_field :frequency %>
+  </p>
   <p>
     <%= f.label :description %>
     <%= f.text_area :description %>
