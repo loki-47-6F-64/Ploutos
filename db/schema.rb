@@ -11,20 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130827204513) do
+ActiveRecord::Schema.define(version: 20130828113420) do
 
   create_table "fixed_costs", force: true do |t|
     t.date     "start"
     t.date     "end"
     t.integer  "type_id"
-    t.decimal  "costRound"
-    t.decimal  "costDecimal"
+    t.integer  "amountRound"
+    t.integer  "amountDecimal"
+    t.integer  "frequency"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "fixed_costs", ["type_id"], name: "index_fixed_costs_on_type_id"
+
+  create_table "incomes", force: true do |t|
+    t.date     "start"
+    t.date     "end"
+    t.integer  "type_id"
+    t.integer  "amountRound"
+    t.integer  "amountDecimal"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "incomes", ["type_id"], name: "index_incomes_on_type_id"
 
   create_table "types", force: true do |t|
     t.string   "name"

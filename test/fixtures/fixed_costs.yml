@@ -1,17 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  start: 2013-08-27
-  end: 2013-08-27
+  start: 2013-08-28
+  end: 2013-08-28
   type_id: 
-  costRound: 9.99
-  costDecimal: 9.99
+  amountRound: 1
+  amountDecimal: 1
+  frequency: 1
   description: MyText
 
 two:
-  start: 2013-08-27
-  end: 2013-08-27
+  start: 2013-08-28
+  end: 2013-08-28
   type_id: 
-  costRound: 9.99
-  costDecimal: 9.99
+  amountRound: 1
+  amountDecimal: 1
+  frequency: 1
   description: MyText
