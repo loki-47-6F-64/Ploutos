@@ -1,0 +1,35 @@
+<% if @fixed_cost.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@fixed_cost.errors.count, "error") %> prohibited
+      this post from being saved:</h2>
+    <ul>
+    <% @fixed_cost.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @fixed_cost, url: fixed_costs_path do |f| %> 
+  <p>
+    <%= f.label :type_id %>
+    <%= f.select :type_id, @types.map { |type| [type.name,type.id] } %>
+  </p>
+  <p>
+    <%= f.label "Cost per month." %>
+    <%= f.text_field :amountRound %>, 
+      <%= f.text_field :amountDecimal %>
+  </p>
+  <p>
+    <%= f.label :frequency %>
+    <%= f.text_field :frequency %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

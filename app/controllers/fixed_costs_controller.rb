@@ -4,6 +4,11 @@ class FixedCostsController < ApplicationController
     @types = Type.all
   end
   
+  def edit
+    @fixed_cost = FixedCosts.find(params[:id])
+    @types = Type.all
+  end
+
   def create
     @fixed_cost = FixedCosts.new(fixed_cost_params)
 
@@ -14,6 +19,24 @@ class FixedCostsController < ApplicationController
       render 'new'
     end
   end
+
+  def update
+    @fixed_cost = FixedCosts.find(params[:id])
+
+    if @fixed_cost.update
+      redirect_to fixed_costs_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @fixed_cost = FixedCosts.find(params[:id])
+
+    @fixed_cost.destroy
+    redirect_to fixed_costs_path
+  end
+
   def fixed_cost_params
     params[:fixed_costs].permit(:type_id, :amountRound, :amountDecimal, :frequency, :description)
   end
