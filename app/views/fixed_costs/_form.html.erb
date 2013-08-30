@@ -13,7 +13,10 @@
 <%= form_for @fixed_cost, url: fixed_costs_path do |f| %> 
   <p>
     <%= f.label :type_id %>
-    <%= f.select :type_id, @types.map { |type| [type.name,type.id] } %>
+    <%= f.select :type_id, @types.map { |type| [type.name,type.id] }, {}, :onchange => 'set_link()' %>
+    <%= link_to 'Add type', new_type_path %>
+    <%= link_to 'Edit type', edit_type_path(@types[0]), :id => 'edit_type' %>
+    <%= link_to 'Destroy', type_path(@types[0]), method: :delete, :id => 'destroy_type' %>
   </p>
   <p>
     <%= f.label "Cost per month." %>

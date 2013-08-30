@@ -11,7 +11,7 @@ class TypesController < ApplicationController
     @type = Type.new(params[:type].permit(:name))
 
     if @type.save
-      redirect_to new_fixed_costs_path
+      redirect_to new_fixed_cost_path
     else
       render 'new'
     end
@@ -20,7 +20,7 @@ class TypesController < ApplicationController
   def update
     @type = Type.find(params[:id])
     if @type.update(params[:type].permit(:name))
-      redirect_to new_fixed_costs_path
+      redirect_to new_fixed_cost_path
     else
       render 'edit'
     end
@@ -30,6 +30,6 @@ class TypesController < ApplicationController
     @type = Type.find(params[:id])
     @type.destroy
 
-    redirect_to new_fixed_costs_path
+    redirect_to new_fixed_cost_path
   end
 end
