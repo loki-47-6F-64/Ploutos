@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_for @income, url: incomes_path do |f| %>
+<%= form_for @income, url: income_path(@income) do |f| %>
  <p>
     <%= f.label "Income per month." %>
     <%= f.text_field :amountRound %>,

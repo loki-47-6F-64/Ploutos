@@ -21,7 +21,7 @@ class FixedCostsController < ApplicationController
     @fixed_cost = FixedCosts.new(fixed_cost_params)
 
     if @fixed_cost.save
-      redirect_to overviews_index_path
+      redirect_to fixed_costs_path
     else
       @types = Type.all
       render 'new'
