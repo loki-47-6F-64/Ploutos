@@ -1,4 +1,5 @@
 class FixedCostsController < ApplicationController
+before_action :authenticate
   def new
     @fixed_cost = FixedCosts.new
     @types = Type.all

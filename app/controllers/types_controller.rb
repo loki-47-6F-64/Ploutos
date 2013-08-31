@@ -1,4 +1,5 @@
 class TypesController < ApplicationController
+before_action :authenticate
   def new
     @type = Type.new
   end

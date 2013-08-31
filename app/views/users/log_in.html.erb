@@ -1,0 +1,12 @@
+<%= form_for :user, url: activate_path do |f| %>
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </p>
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+

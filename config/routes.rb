@@ -3,6 +3,13 @@ Ploutos::Application.routes.draw do
   resources :fixed_costs
   resources :types
   resources :incomes
+
+  get "sign_in"   => "users#sign_in"
+  get "sign_up"   => "users#sign_up"
+  get "log_in"    => "users#log_in"
+  post "new_user" => "users#create"
+  post "activate" => "users#activate"  
+  get "deactivate"=> "users#deactivate"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,4 +1,5 @@
 class IncomesController < ApplicationController
+before_action :authenticate
   def new
     @income = Income.new
   end

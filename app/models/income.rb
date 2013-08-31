@@ -1,6 +1,6 @@
 class Income < ActiveRecord::Base
   def amount
-    return BigDecimal.new(amountRound.to_s) + BigDecimal.new(amountDecimal.to_s) / 100
+    BigDecimal.new(amountRound.to_s) + BigDecimal.new(amountDecimal.to_s) / 100
   end
 
   validates :amountRound, numericality: { only_integer: true }

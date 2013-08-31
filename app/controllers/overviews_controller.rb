@@ -1,4 +1,5 @@
 class OverviewsController < ApplicationController
+before_action :authenticate, only: [:index]
   include Finance
 
   def index
