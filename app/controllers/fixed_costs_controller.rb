@@ -9,6 +9,14 @@ class FixedCostsController < ApplicationController
     @types = Type.all
   end
 
+  def index
+    @fixed_costs = FixedCosts.all
+  end
+
+  def show
+    @fixed_cost = FixedCosts.find params[:id]
+  end
+
   def create
     @fixed_cost = FixedCosts.new(fixed_cost_params)
 
@@ -23,8 +31,8 @@ class FixedCostsController < ApplicationController
   def update
     @fixed_cost = FixedCosts.find(params[:id])
 
-    if @fixed_cost.update
-      redirect_to overviews_index_path
+    if @fixed_cost.update fixed_cost_params
+      redirect_to fixed_costs_path
     else
       render 'edit'
     end
@@ -34,7 +42,7 @@ class FixedCostsController < ApplicationController
     @fixed_cost = FixedCosts.find(params[:id])
 
     @fixed_cost.destroy
-    redirect_to overviews_index_path
+    redirect_to fixed_costs_path
   end
 
   def fixed_cost_params

@@ -1,1 +1,16 @@
-<h1>Hello</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cost per Payment</th>
+      <th>X monthly payment</th>
+      <th>Type of Payment</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @fixed_costs.each do |fixed_cost| %>
+      <%= render 'table', :fixed_cost => fixed_cost %>
+    <% end %>
+  </tbody>
+</table>

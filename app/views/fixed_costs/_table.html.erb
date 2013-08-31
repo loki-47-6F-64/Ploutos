@@ -1,0 +1,8 @@
+<tr>
+  <td><%= fixed_cost.amount %></td>
+  <td><%= fixed_cost.frequency %></td>
+  <td><%= fixed_cost.type.name %></td>
+  <td><%= link_to 'Details', fixed_cost_path(fixed_cost) %></td>
+  <td><%= link_to 'Edit', edit_fixed_cost_path(fixed_cost) %></td>
+  <td><%= link_to 'Delete', fixed_cost_path(fixed_cost), method: :delete %></td>
+</tr>

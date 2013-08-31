@@ -10,7 +10,7 @@
   </div>
 <% end %>
 
-<%= form_for @fixed_cost, url: fixed_costs_path do |f| %> 
+<%= form_for @fixed_cost, url: fixed_cost_path do |f| %> 
   <p>
     <%= f.label :type_id %>
     <%= f.select :type_id, @types.map { |type| [type.name,type.id] }, {}, :onchange => 'set_link()' %>
