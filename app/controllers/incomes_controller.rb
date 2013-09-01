@@ -1,23 +1,23 @@
 class IncomesController < ApplicationController
 before_action :authenticate
   def new
-    @income = Income.new
+    @income = @current_user.incomes.build
   end
 
   def edit
-    @income = Income.find(params[:id])
+    return unless allow_view? params[:id]
   end
 
   def index
-    @incomes = Income.all
+    @incomes = @current_user.incomes
   end
 
   def show
-    @income = Income.find params[:id]
+    return unless allow_view? params[:id]
   end
 
   def create
-    @income = Income.new(income_params)
+    @income = @current_user.incomes.build income_params
 
     if @income.save
       redirect_to incomes_path
@@ -27,7 +27,7 @@ before_action :authenticate
   end
 
   def update
-    @income = Income.find(params[:id])
+    return unless allow_view? params[:id]
 
     if @income.update income_params
       redirect_to incomes_path
@@ -37,7 +37,7 @@ before_action :authenticate
   end
 
   def destroy
-    @income = Income.find params[:id]
+    return unless allow_view? params[:id]
 
     @income.destroy
     redirect_to incomes_path
@@ -45,5 +45,14 @@ before_action :authenticate
 
   def income_params
     params[:income].permit(:amountRound, :amountDecimal, :description)
+  end
+
+  def allow_view? id
+    @income = Income.find id
+
+    if @income.user_id != @current_user.id
+      render 'users/access_violation' and return false
+    end
+    return true
   end
 end

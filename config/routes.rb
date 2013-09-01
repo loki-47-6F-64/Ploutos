@@ -10,6 +10,8 @@ Ploutos::Application.routes.draw do
   post "new_user" => "users#create"
   post "activate" => "users#activate"  
   get "deactivate"=> "users#deactivate"
+
+  root 'overviews#index' 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

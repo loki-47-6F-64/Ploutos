@@ -1,4 +1,4 @@
 class Type < ActiveRecord::Base
-  has_many :products, :dependent => :delete_all
+  has_many :fixed_costs, :dependent => :delete_all
   validates :name, presence: true
 end

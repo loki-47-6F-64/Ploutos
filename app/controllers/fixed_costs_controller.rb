@@ -1,36 +1,37 @@
 class FixedCostsController < ApplicationController
 before_action :authenticate
   def new
-    @fixed_cost = FixedCosts.new
-    @types = Type.all
+    @fixed_cost = @current_user.fixed_costs.build
+    @types = @current_user.types
   end
   
   def edit
-    @fixed_cost = FixedCosts.find(params[:id])
-    @types = Type.all
+    return unless allow_view? params[:id]
+
+    @types = @current_user.types
   end
 
   def index
-    @fixed_costs = FixedCosts.all
+    @fixed_costs = @current_user.fixed_costs
   end
 
   def show
-    @fixed_cost = FixedCosts.find params[:id]
+    return unless allow_view? params[:id]
   end
 
   def create
-    @fixed_cost = FixedCosts.new(fixed_cost_params)
+    @fixed_cost = @current_user.fixed_costs.build fixed_cost_params
 
     if @fixed_cost.save
       redirect_to fixed_costs_path
     else
-      @types = Type.all
+      @types = @current_user.types
       render 'new'
     end
   end
 
   def update
-    @fixed_cost = FixedCosts.find(params[:id])
+    return unless allow_view? params[:id]
 
     if @fixed_cost.update fixed_cost_params
       redirect_to fixed_costs_path
@@ -40,13 +41,22 @@ before_action :authenticate
   end
 
   def destroy
-    @fixed_cost = FixedCosts.find(params[:id])
+    return unless allow_view? params[:id]
 
     @fixed_cost.destroy
     redirect_to fixed_costs_path
   end
 
   def fixed_cost_params
-    params[:fixed_costs].permit(:type_id, :amountRound, :amountDecimal, :frequency, :description)
+    params[:fixed_cost].permit(:type_id, :amountRound, :amountDecimal, :frequency, :description)
+  end
+
+  def allow_view? id
+    @fixed_cost = FixedCost.find id
+
+    if @fixed_cost.user_id != @current_user.id
+      render 'users/access_violation' and return false
+    end
+    return true
   end
 end

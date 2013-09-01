@@ -1,4 +1,4 @@
-class FixedCosts < ActiveRecord::Base
+class FixedCost < ActiveRecord::Base
   def amount
     return BigDecimal.new(amountRound().to_s) + BigDecimal.new(amountDecimal.to_s) / 100
   end

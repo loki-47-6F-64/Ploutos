@@ -11,33 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130831174919) do
+ActiveRecord::Schema.define(version: 20130901133112) do
 
   create_table "fixed_costs", force: true do |t|
-    t.integer  "type_id"
-    t.integer  "amountRound"
-    t.integer  "amountDecimal"
-    t.integer  "frequency"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "type_id"
+    t.integer "user_id"
+    t.integer "amountRound"
+    t.integer "amountDecimal"
+    t.decimal "frequency"
+    t.text    "description"
   end
 
   add_index "fixed_costs", ["type_id"], name: "index_fixed_costs_on_type_id"
+  add_index "fixed_costs", ["user_id"], name: "index_fixed_costs_on_user_id"
 
   create_table "incomes", force: true do |t|
-    t.integer  "amountRound"
-    t.integer  "amountDecimal"
-    t.text     "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
+    t.integer "amountRound"
+    t.integer "amountDecimal"
+    t.text    "description"
   end
 
+  add_index "incomes", ["user_id"], name: "index_incomes_on_user_id"
+
   create_table "types", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "user_id"
+    t.string  "name"
   end
+
+  add_index "types", ["user_id"], name: "index_types_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "username"

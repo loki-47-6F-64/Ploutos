@@ -3,8 +3,8 @@ before_action :authenticate, only: [:index]
   include Finance
 
   def index
-    fixed_costs = FixedCosts.all
-    incomes = Income.all
+    fixed_costs = @current_user.fixed_costs
+    incomes = @current_user.incomes
 
     @spendable = money_left incomes, fixed_costs
   end

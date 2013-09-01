@@ -1,15 +1,15 @@
 class TypesController < ApplicationController
 before_action :authenticate
   def new
-    @type = Type.new
+    @type = @current_user.types.build
   end
 
   def edit
-    @type = Type.find(params[:id])
+    return unless allow_view? params[:id]
   end
 
   def create
-    @type = Type.new(params[:type].permit(:name))
+    @type = @current_user.types.build type_params
 
     if @type.save
       redirect_to new_fixed_cost_path
@@ -19,8 +19,9 @@ before_action :authenticate
   end
 
   def update
-    @type = Type.find(params[:id])
-    if @type.update(params[:type].permit(:name))
+    return unless allow_view? params[:id]
+
+    if @type.update type_params
       redirect_to new_fixed_cost_path
     else
       render 'edit'
@@ -28,9 +29,23 @@ before_action :authenticate
   end
 
   def destroy
-    @type = Type.find(params[:id])
+    return unless allow_view? params[:id]
+
     @type.destroy
 
     redirect_to new_fixed_cost_path
+  end
+
+  def type_params
+    params[:type].permit(:name)
+  end
+
+  def allow_view? id
+    @type = Type.find id
+
+    if @type.user_id != @current_user.id
+      render 'users/access_violation' and return false
+    end
+    return true
   end
 end
