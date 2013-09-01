@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+before_action :authenticate, only: [:update_savings, :update_password, :edit_password]
   def create
     @user = User.new user_params
     
@@ -37,6 +38,29 @@ class UsersController < ApplicationController
     session[:user_id] = nil
 
     redirect_to log_in_path
+  end
+
+  def edit_password
+  end
+
+  def update_password
+    credentials = params[:user].permit(:password, :password_confirmation)
+    old_password = params[:user].permit(:old_password)[:old_password]
+    if @current_user.authenticate( old_password ) &&
+      credentials[:password] == credentials[:password_confirmation] &&
+        @current_user.update(credentials)
+        redirect_to root_path
+    else
+        render 'edit_password'
+    end
+  end
+
+  def update_savings 
+    if @current_user.update params[:user].permit(:savings)
+      redirect_to root_path
+    else
+      render 'overviews/index'
+    end
   end
 
   def user_params

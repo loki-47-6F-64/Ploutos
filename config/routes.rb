@@ -4,12 +4,16 @@ Ploutos::Application.routes.draw do
   resources :types
   resources :incomes
 
-  get "sign_in"   => "users#sign_in"
-  get "sign_up"   => "users#sign_up"
-  get "log_in"    => "users#log_in"
-  post "new_user" => "users#create"
-  post "activate" => "users#activate"  
-  get "deactivate"=> "users#deactivate"
+  patch "update_savings"   => "users#update_savings"
+  patch "edit_password"    => "users#update_password"
+
+  get "sign_in"       => "users#sign_in"
+  get "sign_up"       => "users#sign_up"
+  get "log_in"        => "users#log_in"
+  post "new_user"     => "users#create"
+  post "activate"     => "users#activate"  
+  get "deactivate"    => "users#deactivate"
+  get "edit_password" => "users#edit_password"
 
   root 'overviews#index' 
   # The priority is based upon order of creation: first created -> highest priority.
