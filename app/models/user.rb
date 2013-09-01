@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :username, :password, :password_confirmation, presence: true
   validates :password, length: { minimum: 6 }, :on => :create 
 
+  validates :username, :uniqueness => true
   has_many :fixed_costs, dependent: :destroy
   has_many :incomes, dependent: :destroy
   has_many :types, dependent: :destroy
