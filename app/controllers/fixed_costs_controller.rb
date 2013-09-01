@@ -36,6 +36,7 @@ before_action :authenticate
     if @fixed_cost.update fixed_cost_params
       redirect_to fixed_costs_path
     else
+      @types = @current_user.types
       render 'edit'
     end
   end
