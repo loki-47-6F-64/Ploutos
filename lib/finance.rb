@@ -17,7 +17,7 @@ def money_left(incomes, fixed_costs)
     total_fixed_cost += fixed_cost.amount / fixed_cost.frequency
   end
 
-  return total_income - total_fixed_cost
+  return (total_income - total_fixed_cost).round 2
 end
 
 
