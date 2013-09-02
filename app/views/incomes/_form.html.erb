@@ -1,15 +1,3 @@
-<% if @income.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@income.errors.count, "error") %> prohibited
-      this post from being saved:</h2>
-    <ul>
-    <% @income.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
-
 <%= form_for @income, url: income_path(@income) do |f| %>
  <p>
     <%= f.label "Income per month." %>

@@ -24,4 +24,17 @@ class ApplicationController < ActionController::Base
       redirect_to log_in_path and return false
     end
   end
+
+  def notify id, message, delayed=false
+    if delayed
+      flash[id] = message
+
+      return
+    end
+    if !@message
+      @message = Hash.new
+    end
+
+    @message[id] = message
+  end
 end

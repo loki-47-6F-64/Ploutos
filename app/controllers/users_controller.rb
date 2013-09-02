@@ -5,8 +5,12 @@ before_action :authenticate, only: [:update_savings, :update_password, :edit_pas
     @user.savings = BigDecimal.new '0'    
 
     if @user.save
+      notify :success, 'User created successfully.', true
+
       redirect_to log_in_path
     else
+      notify :error, @user.errors.full_messages
+
       render 'sign_up'
     end
   end
@@ -27,9 +31,13 @@ before_action :authenticate, only: [:update_savings, :update_password, :edit_pas
     if( @user && @user.authenticate(credentials[:password]) )
       reset_session
 
+      notify :info, 'Welcome.', true
+
       session[:user_id] = @user.id 
       redirect_to overviews_index_path
     else
+      notify :error, ['Username and/or Password incorrect'], true
+
       redirect_to log_in_path
     end
   end
@@ -37,6 +45,8 @@ before_action :authenticate, only: [:update_savings, :update_password, :edit_pas
   # Log-out
   def deactivate
     session[:user_id] = nil
+
+    notify :info, 'You are logged out.', true
 
     redirect_to log_in_path
   end
@@ -52,16 +62,23 @@ before_action :authenticate, only: [:update_savings, :update_password, :edit_pas
       credentials[:password] == credentials[:password_confirmation] &&
         @current_user.update(credentials)
 
+        notify :success, 'Successfully changed password.', true
+
         redirect_to root_path
     else
+        notify :error, @user.errors.full_messages
+
         render 'edit_password'
     end
   end
 
   def update_savings 
     if @current_user.update params[:user].permit(:savings)
+      notify :success, 'Successfully changed savings.', true
       redirect_to root_path
     else
+      notify :error, @current_user.errors.full_messages, true
+
       render 'overviews/index'
     end
   end

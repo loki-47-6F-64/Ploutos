@@ -12,8 +12,12 @@ before_action :authenticate
     @type = @current_user.types.build type_params
 
     if @type.save
+      notify :success, 'Type successfully created.', true
+
       redirect_to new_fixed_cost_path
     else
+      notify :error, @type.errors.full_messages
+
       render 'new'
     end
   end
@@ -22,14 +26,20 @@ before_action :authenticate
     return unless allow_view? params[:id]
 
     if @type.update type_params
+      notify :success, 'Type successfully updated', true
+
       redirect_to new_fixed_cost_path
     else
+      notify :error, @type.errors.full_messages
+
       render 'edit'
     end
   end
 
   def destroy
     return unless allow_view? params[:id]
+
+    notify :info, 'Type deleted.', true
 
     @type.destroy
 

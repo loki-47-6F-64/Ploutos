@@ -23,8 +23,12 @@ before_action :authenticate
     @fixed_cost = @current_user.fixed_costs.build fixed_cost_params
 
     if @fixed_cost.save
+      notify :success, 'Fixed Cost added successfully.', true
+
       redirect_to fixed_costs_path
     else
+      notify :error, @fixed_cost.errors.full_messages
+
       @types = @current_user.types
       render 'new'
     end
@@ -34,8 +38,12 @@ before_action :authenticate
     return unless allow_view? params[:id]
 
     if @fixed_cost.update fixed_cost_params
+      notify :success, 'Fixed Cost updated successfully.', true
+
       redirect_to fixed_costs_path
     else
+      notify :error, @fixed_cost.errors.full_messages
+
       @types = @current_user.types
       render 'edit'
     end
@@ -43,6 +51,8 @@ before_action :authenticate
 
   def destroy
     return unless allow_view? params[:id]
+
+    notify :info, 'Fixed Cost deleted.', true
 
     @fixed_cost.destroy
     redirect_to fixed_costs_path
