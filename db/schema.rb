@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130901165207) do
+ActiveRecord::Schema.define(version: 20130902135708) do
 
   create_table "fixed_costs", force: true do |t|
     t.integer "type_id"
     t.integer "user_id"
-    t.integer "amountRound"
-    t.integer "amountDecimal"
+    t.decimal "amount"
     t.decimal "frequency"
     t.text    "description"
   end
@@ -27,8 +26,7 @@ ActiveRecord::Schema.define(version: 20130901165207) do
 
   create_table "incomes", force: true do |t|
     t.integer "user_id"
-    t.integer "amountRound"
-    t.integer "amountDecimal"
+    t.decimal "amount"
     t.text    "description"
   end
 

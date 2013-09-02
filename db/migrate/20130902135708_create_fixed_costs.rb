@@ -3,8 +3,7 @@ class CreateFixedCosts < ActiveRecord::Migration
     create_table :fixed_costs do |t|
       t.references :type, index: true
       t.references :user, index: true
-      t.integer :amountRound
-      t.integer :amountDecimal
+      t.decimal :amount
       t.decimal :frequency
       t.text :description
     end

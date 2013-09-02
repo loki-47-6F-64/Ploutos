@@ -58,17 +58,26 @@ before_action :authenticate, only: [:update_savings, :update_password, :edit_pas
     credentials = params[:user].permit(:password, :password_confirmation)
     old_password = params[:user].permit(:old_password)[:old_password]
 
-    if @current_user.authenticate( old_password ) &&
-      credentials[:password] == credentials[:password_confirmation] &&
-        @current_user.update(credentials)
+    if !@current_user.authenticate( old_password )
+      notify :error, ['Incorrect password']
 
-        notify :success, 'Successfully changed password.', true
+      render 'edit_password'
+      return
+    end
 
-        redirect_to root_path
+    @current_user.password = credentials[:password]
+    @current_user.password_confirmation = credentials[:password_confirmation]
+
+    if @current_user.valid? :update_password
+      @current_user.update credentials
+
+      notify :success, 'Password updated successfully', true
+
+      redirect_to root_path
     else
-        notify :error, @user.errors.full_messages
+      notify :error, @current_user.errors.full_messages
 
-        render 'edit_password'
+      render 'edit_password'
     end
   end
 

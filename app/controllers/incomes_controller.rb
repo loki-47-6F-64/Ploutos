@@ -53,7 +53,10 @@ before_action :authenticate
   end
 
   def income_params
-    params[:income].permit(:amountRound, :amountDecimal, :description)
+    specification = params[:income].permit(:amountRound, :amountDecimal, :description)
+
+    amount = BigDecimal.new(specification[:amountDecimal]) / 100 + specification[:amountRound]
+    specification.merge :amount => amount
   end
 
   def allow_view? id

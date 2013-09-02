@@ -7,9 +7,8 @@
     <%= link_to 'Destroy', type_path(@types[0]), method: :delete, :id => 'destroy_type' %>
   </p>
   <p>
-    <%= f.label "Cost per month." %>
-    <%= f.text_field :amountRound %>, 
-      <%= f.text_field :amountDecimal %>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
   </p>
   <p>
     <%= f.label :frequency %>

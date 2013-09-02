@@ -59,7 +59,10 @@ before_action :authenticate
   end
 
   def fixed_cost_params
-    params[:fixed_cost].permit(:type_id, :amountRound, :amountDecimal, :frequency, :description)
+    specification = params[:fixed_cost].permit(:type_id, :amountRound, :amountDecimal, :frequency, :description)
+
+    amount = BigDecimal.new(specification[:amountDecimal]) / 100 + specification[:amountRound]
+    specification.merge :amount => amount
   end
 
   def allow_view? id

@@ -1,8 +1,7 @@
 <%= form_for @income, url: income_path(@income) do |f| %>
  <p>
-    <%= f.label "Income per month." %>
-    <%= f.text_field :amountRound %>,
-      <%= f.text_field :amountDecimal %>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
   </p>
   <p>
     <%= f.label :description %>

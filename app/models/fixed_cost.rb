@@ -1,13 +1,9 @@
 class FixedCost < ActiveRecord::Base
-  def amount
-    return BigDecimal.new(amountRound().to_s) + BigDecimal.new(amountDecimal.to_s) / 100
-  end
-
   belongs_to :type
 
-  validates :amountRound, numericality: { only_integer: true }
-  validates :amountDecimal, :inclusion => 1...100
+  validates :amount, :type_id, :frequency, presence: true
+  validates :amount, numericality: { greater_than_or_equal_to: 0 }
 
   validates :type_id, numericality: { only_integer: true }
-  validates :frequency, numericality: { only_integer: true }
+  validates :frequency, numericality: { greater_than: 0 }
 end
