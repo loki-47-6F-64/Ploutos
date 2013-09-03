@@ -1,2 +1,8 @@
-<h1><%= @spendable %></h1>
+<h1>Your finances</h1>
+
+<p><%= @status.spendable %></p>
+<p>Income: <%= @status.income %></p>
+<p>Cost: <%= @status.cost %></p>
+<p>Savings: <%= @status.savings %>%</p>
+<p>Unexpected income: <%= @status.sudden_income %></p>
 <p><%= render 'users/form_savings' %></p>

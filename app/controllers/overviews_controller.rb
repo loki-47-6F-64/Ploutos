@@ -3,6 +3,6 @@ before_action :authenticate, only: [:index]
   include Finance
 
   def index
-    @spendable = money_left @current_user
+    @status = Status.new @current_user
   end
 end
