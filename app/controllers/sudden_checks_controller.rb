@@ -10,7 +10,7 @@ before_action :authenticate
   end
 
   def index
-    @sudden_checks = @current_user.sudden_checks
+    @sudden_checks = @current_user.sudden_checks.order when: :desc
   end
 
   def show
