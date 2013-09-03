@@ -3,6 +3,7 @@ Ploutos::Application.routes.draw do
   resources :fixed_costs
   resources :types
   resources :incomes
+  resources :sudden_checks
 
   patch "update_savings"   => "users#update_savings"
   patch "edit_password"    => "users#update_password"

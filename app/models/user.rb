@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   has_many :fixed_costs, dependent: :destroy
   has_many :incomes, dependent: :destroy
+  has_many :sudden_checks, dependent: :destroy
   has_many :types, dependent: :destroy
 
   def password_equal_to_confirmation

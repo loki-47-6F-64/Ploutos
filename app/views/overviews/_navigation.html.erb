@@ -7,6 +7,7 @@
     <ul class="dropdown-menu">
       <li><%= link_to 'Incomes', incomes_path %></li>
       <li><%= link_to 'Fixed costs', fixed_costs_path %></li>
+      <li><%= link_to 'Unexpected checks', sudden_checks_path %></li>
     </ul>
   </li>
 </ul>
@@ -16,6 +17,8 @@
     <ul class="dropdown-menu">
       <li><%= link_to 'New income', new_income_path %></li>
       <li><%= link_to 'New fixed cost', new_fixed_cost_path %></li>
+      <li><%= link_to 'Unexpected income', new_sudden_check_path(:is_income => 1) %></li>
+      <li><%= link_to 'Unexpected cost', new_sudden_check_path(:is_income => -1) %></li>
     </ul>
   </li>
 </ul>

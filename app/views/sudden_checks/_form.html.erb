@@ -1,0 +1,18 @@
+<%= form_for @sudden_check, url: sudden_check_path(@sudden_check) do |f| %>
+  <p>
+    <%= f.label :when %>
+    <%= f.date_select :when, { :use_month_numbers => true, :discard_day => true } %>
+  </p>
+  <p>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </p>
+  <p>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.hidden_field :is_income %>
+    <%= f.submit 'Create check' %>
+  </p>
+<% end %>

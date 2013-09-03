@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @sudden_checks.each do |sudden_check| %>
+      <%= render 'table', :sudden_check => sudden_check %>
+    <% end %>
+  </tbody>
+</table>

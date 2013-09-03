@@ -1,0 +1,7 @@
+<tr>
+  <td><%= sudden_check.amount * sudden_check.is_income %></td>
+  <td><%= sudden_check.when %></td>
+  <td><%= link_to 'Details', sudden_check_path(sudden_check) %></td>
+  <td><%= link_to 'Edit', edit_sudden_check_path(sudden_check) %></td>
+  <td><%= link_to 'Delete', sudden_check_path(sudden_check), method: :delete %></td>
+</tr>
