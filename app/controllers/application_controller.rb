@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   before_action :prepare_session
 
-  MAX_SESSION_TIME = 10
+  MAX_SESSION_TIME = 60
   # Make sure the session has not expired
   # Update the expire date of the session
   def prepare_session
