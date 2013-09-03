@@ -5,8 +5,10 @@ Ploutos::Application.routes.draw do
   resources :incomes
   resources :sudden_checks
 
-  patch "update_savings"   => "users#update_savings"
+  patch "update_data"   => "users#update_data"
   patch "edit_password"    => "users#update_password"
+
+  get "edit_data" => "users#edit_data"
 
   get "sign_in"       => "users#sign_in"
   get "sign_up"       => "users#sign_up"

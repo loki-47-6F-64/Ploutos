@@ -1,11 +1,18 @@
+<div class="span1">
+<table class="table table-bordered">
 <%= form_for :user, url: activate_path do |f| %>
-  <p>
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-  </p>
-  <p>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
-  <p><%= f.submit 'Log in' %></p>
+  <tr>
+    <td><%= f.label :username, :style => "display:inline" %></td>
+    <td><%= f.text_field :username %></td>
+  </tr>
+  <tr>
+    <td><%= f.label :password, :style => "display:inline" %></td>
+    <td><%= f.password_field :password %></td>
+  </tr>
+  <tr>
+    <td><%= f.submit 'Log in' %></td>
+    <td></td>
+  </tr>
 <% end %>
+</table>
+</div>

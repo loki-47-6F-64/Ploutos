@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-before_action :authenticate, only: [:update_savings, :update_password, :edit_password]
+before_action :authenticate, only: [:update_data, :edit_data, :update_password, :edit_password]
   def create
     @user = User.new user_params
     @user.savings = BigDecimal.new '0'    
@@ -36,7 +36,7 @@ before_action :authenticate, only: [:update_savings, :update_password, :edit_pas
       session[:user_id] = @user.id 
       redirect_to overviews_index_path
     else
-      notify :error, ['Username and/or Password incorrect'], true
+      notify :error, ['Username and/or Password is incorrect'], true
 
       redirect_to log_in_path
     end
@@ -81,14 +81,18 @@ before_action :authenticate, only: [:update_savings, :update_password, :edit_pas
     end
   end
 
-  def update_savings 
+  def edit_data
+  end
+
+  def update_data 
     if @current_user.update params[:user].permit(:savings)
-      notify :success, 'Successfully changed savings.', true
+      notify :success, 'Successfully changed your data', true
+
       redirect_to root_path
     else
-      notify :error, @current_user.errors.full_messages, true
+      notify :error, @current_user.errors.full_messages
 
-      render 'overviews/index'
+      render 'edit_data'
     end
   end
 
