@@ -1,9 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
+# password_digest = dropjes
 one:
-  username: MyString
-  password_digest: MyString
+  username: Loki
+  password_digest: $2a$10$YyTORhPdRXdzdK3cVblL8uCrmiWyKt38eeinYo7oyQkPq9ffJDAle
+  savings: 1
 
 two:
-  username: MyString
-  password_digest: MyString
+  username: Hestia
+  password_digest: $2a$10$YyTORhPdRXdzdK3cVblL8uCrmiWyKt38eeinYo7oyQkPq9ffJDAle
+  savings: 1

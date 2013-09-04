@@ -2,14 +2,12 @@
 
 one:
   type_id: 
-  amountRound: 1
-  amountDecimal: 1
+  amount: 1
   frequency: 1
   description: MyText
 
 two:
   type_id: 
-  amountRound: 1
-  amountDecimal: 1
+  amount: 1
   frequency: 1
   description: MyText

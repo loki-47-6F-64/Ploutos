@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   has_many :types, dependent: :destroy
 
   def password_equal_to_confirmation
-    errors.add(:password, 'Must equal the confirmation') unless
-      self.password != self.password_confirmation
+    if self.password != self.password_confirmation
+      errors.add(:password, 'must equal the confirmation')
+    end
   end
 end
