@@ -4,6 +4,6 @@
 
 # Realign links when a different type is selected.
 window.set_link = () ->
-	type_id = $("#fixed_costs_type_id").val();
+	type_id = $("#fixed_cost_type_id").val();
 	$( "#edit_type").attr("href", "/types/#{type_id}/edit" )
 	$( "#destroy_type" ).attr("href", "/types/#{type_id}" )
