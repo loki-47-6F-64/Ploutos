@@ -11,18 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130903002447) do
+ActiveRecord::Schema.define(version: 20130927214553) do
 
-  create_table "fixed_costs", force: true do |t|
-    t.integer "type_id"
-    t.integer "user_id"
-    t.decimal "amount"
-    t.decimal "frequency"
-    t.text    "description"
-  end
-
-  add_index "fixed_costs", ["type_id"], name: "index_fixed_costs_on_type_id"
-  add_index "fixed_costs", ["user_id"], name: "index_fixed_costs_on_user_id"
+# Could not dump table "fixed_costs" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "incomes", force: true do |t|
     t.integer "user_id"
