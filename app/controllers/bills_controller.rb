@@ -16,9 +16,12 @@ include CustomContainer
       # Iterate all payments
       while ((next_payment <=> now) <= 0) do
         bill = fixed_cost.bills.find_or_create_by(
-          cost: fixed_cost.amount,
           added: next_payment)
 
+        if bill.cost == nil
+          bill.cost = fixed_cost.amount
+          bill.save(:validate => false)
+        end
         @bills.push bill
 
         next_payment = next_payment >> fixed_cost.frequency
