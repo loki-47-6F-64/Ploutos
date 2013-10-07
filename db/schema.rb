@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130927214553) do
+ActiveRecord::Schema.define(version: 20131007095229) do
+
+  create_table "bills", force: true do |t|
+    t.decimal  "cost"
+    t.date     "added"
+    t.date     "when_payed"
+    t.integer  "fixed_cost_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "bills", ["fixed_cost_id"], name: "index_bills_on_fixed_cost_id"
 
 # Could not dump table "fixed_costs" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass

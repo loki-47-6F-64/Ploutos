@@ -7,6 +7,10 @@
     <%= link_to 'Destroy', type_path(@types[0]), method: :delete, :id => 'destroy_type' %>
   </p>
   <p>
+    <%= f.label :first_payment %>
+    <%= f.date_select :first_payment, { :discard_day => true } %>
+  </p>
+  <p>
     <%= f.label :amount %>
     <%= f.text_field :amount %>
   </p>

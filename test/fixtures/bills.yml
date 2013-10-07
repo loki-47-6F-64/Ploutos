@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cost: 9.99
+  added: 2013-09-30
+  when_payed: 2013-09-30
+  fixed_cost_id: 
+
+two:
+  cost: 9.99
+  added: 2013-09-30
+  when_payed: 2013-09-30
+  fixed_cost_id: 

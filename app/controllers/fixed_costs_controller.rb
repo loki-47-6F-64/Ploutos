@@ -79,7 +79,7 @@ include CustomContainer
   end
 
   def fixed_cost_params
-    parameters = params[:fixed_cost].permit(:type_id, :amount, :frequency, :priority, :description)
+    parameters = params[:fixed_cost].permit(:type_id, :first_payment, :amount, :frequency, :priority, :description)
     if parameters[:priority] == nil
       parameters[:next] = nil
       parameters[:prev] = nil

@@ -18,6 +18,9 @@ Ploutos::Application.routes.draw do
   get "deactivate"    => "users#deactivate"
   get "edit_password" => "users#edit_password"
 
+  get "due_payments"  => "bills#index"
+  patch "due_payments/:id" => "bills#pay", as: :bill
+
   root 'overviews#index' 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

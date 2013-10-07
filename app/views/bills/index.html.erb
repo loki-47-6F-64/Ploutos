@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Cost</th>
+      <th>Date added</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @priority.each do |fixed_cost| %>
+      <% fixed_cost.each_unpaid do |bill| %>
+        <%= render 'row', :bill => bill %>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

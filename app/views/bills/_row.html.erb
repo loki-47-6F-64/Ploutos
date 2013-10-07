@@ -1,0 +1,14 @@
+<tr>
+  <td><%= bill.cost %></td>
+  <td><%= bill.added %></td>
+  <td>
+    <% if bill.payed? %>
+      <%= bill.when_payed %>
+    <% else %>
+      <%= form_for bill, url: bill_path(bill) do |f| %>
+        <%= f.hidden_field :when_payed, :value => Date.today %>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+  </td>
+</tr>
